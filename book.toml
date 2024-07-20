@@ -6,4 +6,4 @@ src = "."
 title = "Notes on Programming Languages"
 
 [output.html]
-additional-js = ["index.js"]
+additional-js = ["./index.js"]

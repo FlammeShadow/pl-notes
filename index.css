@@ -5,18 +5,11 @@
     vertical-align: text-bottom;
 }
 
-h4 {
-    float: left;
+.ref {
+    text-indent: -3.6em;
+    padding-left: 1em;
 }
 
-h4, p.bib::before {
-    content: " ";
-    white-space: pre-wrap;
-}
-
-p.bib {
-    display: block;
-    left: 44px;
-    margin-top: 40px;
-    overflow: hidden;
+.ref a {
+    text-decoration: none;
 }

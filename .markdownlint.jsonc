@@ -24,10 +24,22 @@
     "stern": false
   },
 
+  // MD025/single-title/single-h1 : Multiple top-level headings in the same document : https://github.com/DavidAnson/markdownlint/blob/v0.32.1/doc/md025.md
+	/*
+	"MD025":
+	{
+		// Heading level
+		"level": 1,
+		// RegExp for matching title in front matter
+		"front_matter_title": "^\\s*title\\s*[:=]"
+	},
+  */
+  "MD025": false,
+
   // MD033/no-inline-html : Inline HTML : https://github.com/DavidAnson/markdownlint/blob/v0.34.0/doc/md033.md
   "MD033": {
     // Allowed elements
-    "allowed_elements": ["a", "br", "img", "link", "p"]
+    "allowed_elements": ["a", "br", "i", "img", "link", "p"]
   },
 
   // MD045/no-alt-text : Images should have alternate text (alt text) : https://github.com/DavidAnson/markdownlint/blob/v0.32.1/doc/md045.md

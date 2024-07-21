@@ -13,6 +13,10 @@
 
 - [关于编程语言理论](./zh-CN/plt/about.md)
 
+# 演算
+
+- [λ 演算 vs. λᵥ 演算](./zh-CN/plt/cbn-vs-cbv-calculus.md)
+
 # 术语和文献
 
 - [参考文献](./zh-CN/bibliography.md)

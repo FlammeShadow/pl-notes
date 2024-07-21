@@ -2,8 +2,10 @@
 authors = ["Flamme Shadow"]
 language = "zh"
 multilingual = true
-src = "."
 title = "Notes on Programming Languages"
 
 [output.html]
 additional-js = ["./index.js"]
+
+[build]
+build-dir = "book"

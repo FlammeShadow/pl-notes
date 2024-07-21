@@ -1,6 +1,7 @@
 # 参考文献
 
-<link rel="stylesheet" href="../index.css">
+<a name="Bare84"></a>
+[Bare84] Hendrik Pieter Barendregt, The Lambda Calculus: Its Syntax and Semantics [Studies in Logic and the Foundations of Mathematics 103], Revised Edition, Amsterdam: North Holland, 1984.
 
 <a name="Kl80"></a>
 [Kl80] Jan Willem Klop, [<i>Combinatory Reduction Systems</i>](https://eprints.illc.uva.nl/id/eprint/1876/1/HDS-33-Jan-Willem-Klop.text.pdf), Ph.D. Thesis, University of Utrecht, 1980. Also, Mathematical Centre Tracts 127.

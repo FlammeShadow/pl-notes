@@ -1,14 +1,19 @@
 const supportLanguages = ["zh-CN", "en-US"];
 
+const langTranslation = {
+    "zh-CN": "简体中文",
+    "en-US": "English"
+}
+
 let languageChapters = {
     "zh-CN": [], "en-US": []
 };
 
-let currentLanguage;
+let currentLang;
 
 for (let language of supportLanguages) {
     if (document.baseURI.includes(`/${language}/`)) {
-        currentLanguage = language;
+        currentLang = language;
         break;
     }
 }
@@ -46,44 +51,58 @@ let hideEmptyChapterItems = () => {
     });
 }
 
-let getCurrentLanguageChapter = () => {
+let getLanguageChapter = (lang) => {
     let chapterItems = Array.from(document.getElementsByClassName("chapter-item expanded affix"));
     for (let item of chapterItems) {
-        if (item.textContent == currentLanguage) {
+        if (item.textContent == lang) {
             return item;
         }
     }
+    return cur;
 }
 
-let displayChapterItemsOfCurrentLanguage = () => {
-    let cur = getCurrentLanguageChapter();
-    let items = languageChapters[currentLanguage];
+let cur = getLanguageChapter(currentLang)
+
+let displayChapterItemsOfcurrentLang = () => {
+    let items = languageChapters[currentLang];
     let first = items[0];
     if (first) {
        cur.insertAdjacentElement('afterend', first);
     }
     for (let item of items) {
         first = first.insertAdjacentElement('afterend', item);
-        item.style.display = "block";
+        if (!item.innerHTML?.includes("index.html")) {
+            item.style.display = "block";
+        }
     }
-    cur.style.fontWeight = "bold"
-    cur.innerHTML = cur.innerHTML.replace(cur.textContent + "</a>", `${cur.textContent} (Current)</a>`);
+    cur.style.fontWeight = "bold";
+    // console.log(langTranslation[cur.textContent]);
+    cur.innerHTML = cur.innerHTML.replace(cur.textContent + "</a>", `${langTranslation[cur.textContent]} (Current)</a>`);
 }
 
 let enableNoOrder = () => {
-    let items = languageChapters[currentLanguage];
+    let items = languageChapters[currentLang];
     for (let item of items) {
         if (item.classList.value.includes("chapter-item expanded")) {
            let i = item.textContent.search(' ');
            let order = item.textContent.slice(0, i);
            item.firstElementChild.firstElementChild.remove();
-           console.log(order.length);
+           // console.log(order.length);
            item.firstElementChild.textContent = ' '.repeat((order.length - 2) * 2) + item.textContent;
            item.firstElementChild.style.whiteSpace = "pre-wrap";
         }
     }
 }
 
+let displayTranslationOfLangCode = () => {
+    for (let lang of supportLanguages) {
+        if (lang == currentLang) continue;
+        let item = getLanguageChapter(lang);
+        item.innerHTML = item.innerHTML.replace(item.textContent + "</a>", `${langTranslation[item.textContent]}</a>`);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', hideEmptyChapterItems);
-document.addEventListener("DOMContentLoaded", displayChapterItemsOfCurrentLanguage);
+document.addEventListener("DOMContentLoaded", displayChapterItemsOfcurrentLang);
 document.addEventListener("DOMContentLoaded", enableNoOrder);
+document.addEventListener("DOMContentLoaded", displayTranslationOfLangCode);
